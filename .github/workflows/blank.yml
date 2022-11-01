@@ -1,0 +1,21 @@
+name: My workflow
+
+on: 
+ push:
+    branches: [ "main" ]
+
+jobs:
+   my-job:
+    name: My job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.5.0
+      - name: Deploy to foo-bar.surge.sh
+        uses: dswistowski/surge-sh-action@v1
+        with:
+          domain: 'debonair-organization.surge.sh'
+          project: '.'
+          login: ${{ secrets.LOGIN }}
+          token: ${{ secrets.FAIZAN }}
+
